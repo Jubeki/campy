@@ -38,3 +38,11 @@ $factory->state(User::class, 'manual', [
     'birthdate' => Carbon::parse('-15years')->format('Y-m-d'),
     'complete' => 0,
 ]);
+
+$factory->state(User::class, 'details', [
+    'role' => 'user',
+    'zip' => '12345',
+    'diet' => 'normal',
+    'complete' => 1,
+    'mobile' => '123456789'
+]);
