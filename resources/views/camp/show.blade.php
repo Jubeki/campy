@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="mb-4"><h2>Alle Camps</h2>
-      @if ($user->complete == '0') <div class="rounded-lg bg-yellow p-3 mb-4 mt-2">Profil fertigstellen: Bevor du dich für ein Camp anmelden kannst, musst du <a href="{{ route('profile') }}">hier</a> dein Profil vervollstätigen.</div>@endif
+      @if ($user->complete == '0') <div class="rounded-lg bg-yellow p-3 mb-4 mt-2">Profil fertigstellen: Bevor du dich für ein Camp anmelden kannst, musst du <a href="{{ route('profile') }}">hier</a> dein Profil vervollständigen.</div>@endif
         <p class="text-sm">Alle Camps anzeigen, aktuell auch noch jene, für die ich schon angemeldet bin.</p>
     </div>
 
