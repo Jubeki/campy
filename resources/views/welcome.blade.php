@@ -40,7 +40,7 @@
                     </h1>
                     <div class="text-center mb-8">
                 @auth
-                    <a href="{{ url('/home') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
+                    <a href="{{ url('/profile') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
                 @else
                     <a href="{{ route('register') }}" class="mb-4 inline-block no-underline hover:underline text-sm  bg-brand-dark text-white rounded-lg p-4 tracking-wide">Für Camp anmelden</a>
                 @endauth
