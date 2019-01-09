@@ -43,8 +43,8 @@
                     <a href="{{ url('/profile') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
                 @else
                     <a href="{{ route('register') }}" class="mb-4 inline-block no-underline hover:underline text-sm  bg-brand-dark text-white rounded-lg p-4 tracking-wide">Für Camp anmelden</a>
-                @endauth
                 <p class="font-normal">Dein x-tes Camp? <a href="{{ route('login') }}" class="text-sm font-normal pr-6">Login</a></p>
+                @endauth
                     
 
                 <ul class="hidden mt-8 list-reset">
