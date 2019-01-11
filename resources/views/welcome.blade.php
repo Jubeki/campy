@@ -40,11 +40,11 @@
                     </h1>
                     <div class="text-center mb-8">
                 @auth
-                    <a href="{{ url('/home') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
+                    <a href="{{ route('profile') }}" class="block no-underline hover:underline text-sm text-brand-dark uppercase">Zum Profil</a>
                 @else
                     <a href="{{ route('register') }}" class="mb-4 inline-block no-underline hover:underline text-sm  bg-brand-dark text-white rounded-lg p-4 tracking-wide">Für Camp anmelden</a>
+                    <p class="font-normal">Dein x-tes Camp? <a href="{{ route('login') }}" class="text-sm font-normal pr-6">Login</a></p>
                 @endauth
-                <p class="font-normal">Dein x-tes Camp? <a href="{{ route('login') }}" class="text-sm font-normal pr-6">Login</a></p>
                     
 
                 <ul class="hidden mt-8 list-reset">
