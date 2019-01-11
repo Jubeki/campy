@@ -16,7 +16,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::view('/teilnahmebedingungen', 'legal.terms');
 Route::view('/datenschutz', 'legal.privacy');
-Route::view('/impressum', 'impressum');
+Route::view('/impressum', 'legal.imprint');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile', 'ProfileController@update');
