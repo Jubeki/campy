@@ -47,15 +47,13 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
-        $passedID = Str::after($request->path(), '/');
-        $loggedUser = Auth::user()->id;
-        $age = Auth::user()->age;
+        $user = Auth::user();
+        $age = $user->age;
 
-        if ($passedID == $loggedUser) {
-            if ($age < 18 and $age != 0) {
-                $this->validate($request, [
+        if ($age < 18 and $age != 0) {
+            $this->validate($request, [
                 'firstname' => 'required',
                 'lastname' => 'required',
                 'birthdate' => 'required',
@@ -67,9 +65,9 @@ class UserController extends Controller
                 'guardian_email' => 'required',
                 'guardian_phone' => 'required',
             ]);
-            }
+        }
 
-            else {
+        else {
             $this->validate($request, [
                 'firstname' => 'required',
                 'lastname' => 'required',
@@ -80,26 +78,22 @@ class UserController extends Controller
             ]);
         }
 
-            $user->firstname = $request->firstname;
-            $user->lastname = $request->lastname;
-            $user->birthdate = $request->birthdate;
-            $user->diet = $request->diet;
-            $user->mobile = $request->mobile;
-            $user->instagram = $request->instagram;
-            $user->twitter = $request->twitter;
-            $user->zip = $request->zip;
-            $user->guardian_firstname = $request->guardian_firstname;
-            $user->guardian_lastname = $request->guardian_lastname;
-            $user->guardian_email = $request->guardian_email;
-            $user->guardian_phone = $request->guardian_phone;
-            $user->complete = 1;
-            $user->save();
+        $user->firstname = $request->firstname;
+        $user->lastname = $request->lastname;
+        $user->birthdate = $request->birthdate;
+        $user->diet = $request->diet;
+        $user->mobile = $request->mobile;
+        $user->instagram = $request->instagram;
+        $user->twitter = $request->twitter;
+        $user->zip = $request->zip;
+        $user->guardian_firstname = $request->guardian_firstname;
+        $user->guardian_lastname = $request->guardian_lastname;
+        $user->guardian_email = $request->guardian_email;
+        $user->guardian_phone = $request->guardian_phone;
+        $user->complete = 1;
+        $user->save();
 
-            return redirect('camps');
-        } else {
-            Session::flash('info', 'Denkste! Du kannst natürlich nur deine eigenen Daten ändern…');
-            return redirect('profile');
-        }
+        return redirect('camps');
 
     }
 }
