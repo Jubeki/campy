@@ -12,14 +12,15 @@
 */
 Auth::routes();
 
-// Route::get('/', function () { return view('welcome'); });
+Route::get('/', 'WelcomeController@index');
+
+Route::view('/teilnahmebedingungen', 'legal.terms');
+Route::view('/datenschutz', 'legal.privacy');
+Route::view('/impressum', 'impressum');
+
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile', 'ProfileController@update');
-Route::get('/teilnahmebedingungen', function() { return view('legal.terms');} );
-Route::get('/datenschutz', function() { return view('legal.privacy');} );
-Route::get('/impressum', function() { return view('impressum');} );
 
-Route::get('/', 'WelcomeController@index');
 Route::get('mycamps/create/{camp}', 'CampUserController@create');
 Route::resource('mycamps', 'CampUserController');
 Route::resource('camps', 'CampController');
