@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class UserController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new ProfileController which can only be accessed by authenticated users
      *
      * @return void
      */
@@ -21,7 +21,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the profile dashboard.
+     * Show the profile of the authenticated user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -43,7 +43,7 @@ class UserController extends Controller
 
 
     /**
-     * Show the application dashboard.
+     * Update the profile of the authenticated user and redirect back to the profile
      *
      * @return \Illuminate\Http\Response
      */
