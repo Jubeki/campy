@@ -38,7 +38,7 @@ class UserController extends Controller
         
         $user = Auth::user();
         $selected_diet = $user->diet;
-        return view('home',compact('user', 'selected_diet', 'diets'));
+        return view('profile',compact('user', 'selected_diet', 'diets'));
     }
 
 
