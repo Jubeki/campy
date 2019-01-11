@@ -26,10 +26,12 @@ Route::view('/impressum', 'legal.imprint');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile', 'ProfileController@update');
 
+// List of registerable Camps
+Route::get('/camps', 'CampController@index');
+
 // Camp Links
 Route::get('mycamps/create/{camp}', 'CampUserController@create');
 Route::resource('mycamps', 'CampUserController');
-Route::resource('camps', 'CampController');
 
 // Admin Links
 Route::group(['middleware' => 'can:isAdmin'], function() {
