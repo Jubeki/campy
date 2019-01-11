@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class CampController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a list of registerable Camps
      *
      * @return \Illuminate\Http\Response
      */
