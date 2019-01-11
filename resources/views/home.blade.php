@@ -27,7 +27,7 @@
 </div>
 @endif
 
-                <form action="/users/{{ $user->id }}" method="POST">
+                <form action="/profile" method="POST">
                   <input type="hidden" name="_method" value="PATCH">
                   {{ csrf_field() }}
                     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
