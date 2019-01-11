@@ -44,9 +44,6 @@ class CampController extends Controller
      * If the user is already registered it will show an update form and cancellation form
      */
     public function show(Camp $camp) {
-        if(is_null($camp)) {
-            return redirect('/mycamps');
-        }
         $user = Auth::user();
         $age = $user->age;
         $campuser = $user->camps()->where('camp_id', $camp->id)->first();
@@ -62,9 +59,6 @@ class CampController extends Controller
      * If the user is already registered the registration will be updated
      */
     public function register(Request $request, Camp $camp) {
-        if(is_null($camp)) {
-            return redirect('/mycamps');
-        }
         $campuser_exists = CampUser::where('user_id', Auth::id())->where('camp_id', $camp->id)->exists();
         if($campuser_exists) {
             return redirect('/mycamps');
