@@ -93,7 +93,7 @@ class UserController extends Controller
         $user->complete = 1;
         $user->save();
 
-        return redirect('camps');
+        return redirect('profile');
 
     }
 }
