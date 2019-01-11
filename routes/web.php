@@ -15,23 +15,27 @@
 Auth::routes();
 
 // Welcome Page with a List of registerable Camps
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('index');
 
 // Legal Links
-Route::view('/teilnahmebedingungen', 'legal.terms');
-Route::view('/datenschutz', 'legal.privacy');
-Route::view('/impressum', 'legal.imprint');
+Route::view('/teilnahmebedingungen', 'legal.terms')->name('terms');
+Route::view('/datenschutz', 'legal.privacy')->name('privacy');
+Route::view('/impressum', 'legal.imprint')->name('imprint');
 
 // Profile for authenticated users
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::post('/profile', 'ProfileController@update');
 
 // List of registerable Camps
-Route::get('/camps', 'CampController@index');
+Route::get('/camps', 'CampController@index')->name('camps');
 
-// Camp Links
-Route::get('mycamps/create/{camp}', 'CampUserController@create');
-Route::resource('mycamps', 'CampUserController');
+// List of registered Camps
+Route::get('/mycamps', 'CampController@mycamps')->name('mycamps');
+
+// Registration-Process for Camp
+Route::get('/camps/{camp}', 'CampController@show')->name('camp');
+Route::post('/camps/{camp}', 'CampController@register');
+Route::patch('/camps/{camp}', 'CampController@update');
 
 // Admin Links
 Route::group(['middleware' => 'can:isAdmin'], function() {

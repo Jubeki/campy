@@ -19,7 +19,7 @@
     <span class="font-bold">Warteliste:</span> Das Camp ist aktuell ausgebucht. Du kannst dich aber auf der Warteliste eintragen. Du rutscht automatisch nach, sobald Plätze frei werden.
 </div> @endif
 
-<form action="/mycamps" method="post">
+<form action="{{route('camp', [$camp])}}" method="post">
   {{ csrf_field() }}
     <div class="bg-grey-lighter shadow p-4 rounded lg:w-2/3">
         <p class="font-bold mb-4">Diese Daten von dir kennen wir schon…</p>
@@ -85,8 +85,6 @@
         <p class="mt-2"><input type="checkbox" name="consent" value="1" > <a href="/datenschutz" target="_blank">Einwilligung der Speicherung personenbezogener Daten
 </a> erteilen</p>
 
-        <input type="hidden" name="camp" value="{{ $camp->id }}">
-<input type="hidden" name="user" value="{{ $user->id }}">
 <div class="mt-8"><input type="submit" value="Anmelden" class="bg-brand p-2 text-white shadow"></div>
 </form>
 
