@@ -16,7 +16,7 @@ class CampController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $camps = \App\Camp::all()->where('camp_status','=','open')->where('visible','=',1)->sortBy('from');
+        $camps = Camp::getRegisterableCamps();
         return view('camp.show',compact('camps', 'free', 'user'));
     }
 

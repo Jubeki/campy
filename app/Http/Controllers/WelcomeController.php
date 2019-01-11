@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Camp;
 use Illuminate\Http\Request;
 
 class WelcomeController extends Controller
@@ -13,7 +14,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $camps = \App\Camp::all()->where('camp_status','=','open')->where('visible','=',1)->sortBy('from');
+        $camps = Camp::getRegisterableCamps();
         return view('welcome',compact('camps'));
     }
 }
