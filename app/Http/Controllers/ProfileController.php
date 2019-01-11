@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Create a new ProfileController which can only be accessed by authenticated users
