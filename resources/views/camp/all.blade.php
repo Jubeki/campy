@@ -27,7 +27,7 @@
             @foreach ($camps as $camp)
                 <tr>
                     <td class="font-bold"><a href="{{route('camp', [$camp])}}">{{ $camp->city }}</a></td>
-                    <td>{{ $camp->from->format('d.m.Y') }}</td>
+                    <td>{{ $camp->from->format('d.m.') }}</td>
                     <td>{{ $camp->to->format('d.m.Y') }}</td>
                     <td>
                         <p class="flex items-center">

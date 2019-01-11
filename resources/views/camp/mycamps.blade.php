@@ -27,7 +27,7 @@
                 @foreach ($camp_user as $camp)
                     <tr>
                         <td class="font-bold"><a href="mycamps/{{ $camp->id }}/edit">{{ $camp->city }}</a></th>
-                        <td>{{ $camp->from->format('d.m.Y') }}</td>
+                        <td>{{ $camp->from->format('d.m.') }}</td>
                         <td>{{ $camp->to->format('d.m.Y') }}</td>
                         <td>@component('components.status_camp', ['camp' => $camp->pivot->status]) @endcomponent</td>
                         <td>@component('components.status_laptop', ['laptop' => $camp->pivot->laptop]) @endcomponent</td>
