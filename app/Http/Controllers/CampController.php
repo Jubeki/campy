@@ -17,7 +17,7 @@ class CampController extends Controller
     {
         $user = Auth::user();
         $camps = Camp::getRegisterableCamps();
-        return view('camp.show',compact('camps', 'free', 'user'));
+        return view('camp.show',compact('camps', 'user'));
     }
 
     /**
