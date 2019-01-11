@@ -27,7 +27,7 @@ class CampController extends Controller
     {
         $user = Auth::user();
         $camps = Camp::getRegisterableCamps();
-        return view('camp.show',compact('camps', 'user'));
+        return view('camp.all',compact('camps', 'user'));
     }
     
     /**
@@ -36,7 +36,7 @@ class CampController extends Controller
     public function mycamps() {
         $user = Auth::user();
         $camp_user = Auth::user()->camps->sortBy('from');
-        return view('camp_user.index', compact('user', 'camp_user'));
+        return view('camp.mycamps', compact('user', 'camp_user'));
     }
 
     /**
@@ -51,10 +51,10 @@ class CampController extends Controller
         $age = $user->age;
         $campuser = $user->camps()->where('camp_id', $camp->id)->first();
         if(is_null($campuser)) {
-            return view('camp.create', compact('user', 'camp', 'age'));
+            return view('camp.register', compact('user', 'camp', 'age'));
         }
         $camp = $campuser;
-        return view('camp_user.show', compact('user', 'camp'));
+        return view('camp.update', compact('user', 'camp'));
     }
 
     /**
