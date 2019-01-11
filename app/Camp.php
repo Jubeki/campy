@@ -5,6 +5,7 @@ namespace App;
 use App\Camp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Camp extends Model
 {
