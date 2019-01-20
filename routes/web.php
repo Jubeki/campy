@@ -10,21 +10,28 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+// Add routes for authentication
 Auth::routes();
 
-// Route::get('/', function () { return view('welcome'); });
-Route::get('/profile', 'UserController@index')->name('profile');
-Route::get('/teilnahmebedingungen', function() { return view('legal.terms');} );
-Route::get('/datenschutz', function() { return view('legal.privacy');} );
-Route::get('/impressum', function() { return view('impressum');} );
-
+// Welcome Page with a List of registerable Camps
 Route::get('/', 'WelcomeController@index');
+
+// Legal Links
+Route::view('/teilnahmebedingungen', 'legal.terms');
+Route::view('/datenschutz', 'legal.privacy');
+Route::view('/impressum', 'legal.imprint');
+
+// Profile for authenticated users
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::post('/profile', 'ProfileController@update');
+
+// Camp Links
 Route::get('mycamps/create/{camp}', 'CampUserController@create');
 Route::resource('mycamps', 'CampUserController');
 Route::resource('camps', 'CampController');
-Route::resource('users', 'UserController');
 
-
+// Admin Links
 Route::group(['middleware' => 'can:isAdmin'], function() {
     Route::get('/adminpanel/dashboard', 'CampAdminController@index');
     Route::resource('admin', 'CampAdminController');
