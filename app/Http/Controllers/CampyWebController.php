@@ -43,7 +43,30 @@ class CampyWebController extends Controller
     }
 
     public function magazin(Request $request) {
-
+        $validator = Validator::make($request->all(), [
+            'vorname' => 'required',
+            'nachname' => 'required',
+            'email' => 'required',
+            'anschrift' => 'required',
+            'plz' => 'required',
+            'ort' => 'required',
+            'anzahl' => 'required',
+            'reason' => 'required',
+        ]);
+        if($validator->fails()) {
+            return getErrorPath($request);
+        }
+        saveRequestToDatabase($request, [
+            'vorname',
+            'nachname',
+            'email',
+            'anschrift',
+            'plz',
+            'ort',
+            'anzahl',
+            'reason',
+        ]);
+        return getReturnPath($request);
     }
 
     public function kontakt(Request $request) {
