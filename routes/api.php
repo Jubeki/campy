@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('camp_registration', 'CampyWebController@camp_registration');
+Route::post('gewinnspiel', 'CampyWebController@gewinnspiel');
+Route::post('magazin', 'CampyWebController@magazin');
+Route::post('kontakt', 'CampyWebController@kontakt');
+Route::post('interest', 'CampyWebController@interest');
