@@ -70,7 +70,24 @@ class CampyWebController extends Controller
     }
 
     public function kontakt(Request $request) {
-
+        $validator = Validator::make($request->all(), [
+            'vorname' => 'required',
+            'nachname' => 'required',
+            'email' => 'required',
+            'anliegen' => 'required',
+            'nachricht' => 'required',
+        ]);
+        if($validator->fails()) {
+            return getErrorPath($request);
+        }
+        saveRequestToDatabase($request, [
+            'vorname',
+            'nachname',
+            'email',
+            'anliegen',
+            'nachricht',
+        ]);
+        return getReturnPath($request);
     }
 
     public function interest(Request $request) {
