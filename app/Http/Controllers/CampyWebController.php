@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\CampyWeb;
 
 class CampyWebController extends Controller
 {
@@ -24,5 +25,14 @@ class CampyWebController extends Controller
 
     public function interest(Request $request) {
 
+    }
+
+    public function saveRequestToDatabase(Request $request, $parameters) {
+        $values = $request->only($parameters);
+        CampyWeb::insert($values);
+    }
+
+    public function getReturnPath(Request $request) {
+        return $request->return_path ?? 'https://code.design/';
     }
 }
