@@ -16,15 +16,15 @@ class CampyWebController extends Controller
             'tos' => 'required|accepted',
         ]);
         if($validator->fails()) {
-            return getErrorPath($request);
+            return $this->getErrorPath($request);
         }
-        saveRequestToDatabase($request, [
+        $this->saveRequestToDatabase($request, 'camp_registration', [
             'mobile',
             'fullname',
             'event',
             'tos',
         ]);
-        return getReturnPath($request);
+        return $this->getReturnPath($request);
     }
 
     public function gewinnspiel(Request $request) {
@@ -33,13 +33,13 @@ class CampyWebController extends Controller
             'email' => 'required',
         ]);
         if($validator->fails()) {
-            return getErrorPath($request);
+            return $this->getErrorPath($request);
         }
-        saveRequestToDatabase($request, [
+        $this->saveRequestToDatabase($request, 'gewinnspiel', [
             'name',
             'email',
         ]);
-        return getReturnPath($request);
+        return $this->getReturnPath($request);
     }
 
     public function magazin(Request $request) {
@@ -54,9 +54,9 @@ class CampyWebController extends Controller
             'reason' => 'required',
         ]);
         if($validator->fails()) {
-            return getErrorPath($request);
+            return $this->getErrorPath($request);
         }
-        saveRequestToDatabase($request, [
+        $this->saveRequestToDatabase($request, 'magazin', [
             'vorname',
             'nachname',
             'email',
@@ -66,7 +66,7 @@ class CampyWebController extends Controller
             'anzahl',
             'reason',
         ]);
-        return getReturnPath($request);
+        return $this->getReturnPath($request);
     }
 
     public function kontakt(Request $request) {
@@ -78,16 +78,16 @@ class CampyWebController extends Controller
             'nachricht' => 'required',
         ]);
         if($validator->fails()) {
-            return getErrorPath($request);
+            return $this->getErrorPath($request);
         }
-        saveRequestToDatabase($request, [
+        $this->saveRequestToDatabase($request, 'kontakt', [
             'vorname',
             'nachname',
             'email',
             'anliegen',
             'nachricht',
         ]);
-        return getReturnPath($request);
+        return $this->getReturnPath($request);
     }
 
     public function interest(Request $request) {
@@ -97,19 +97,22 @@ class CampyWebController extends Controller
             'city' => 'required',
         ]);
         if($validator->fails()) {
-            return getErrorPath($request);
+            return $this->getErrorPath($request);
         }
-        saveRequestToDatabase($request, [
+        $this->saveRequestToDatabase($request, 'interest', [
             'vorname',
             'email',
             'city',
         ]);
-        return getReturnPath($request);
+        return $this->getReturnPath($request);
     }
 
-    public function saveRequestToDatabase(Request $request, $parameters) {
+    public function saveRequestToDatabase(Request $request, $route, $parameters) {
         $values = $request->only($parameters);
-        CampyWeb::insert($values);
+        CampyWeb::create([
+            'route' => $route,
+            'request' => $values,
+        ]);
     }
 
     public function getReturnPath(Request $request) {
