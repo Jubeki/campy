@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\CampyWeb;
 
 class CampyWebController extends Controller
 {
     public function camp_registration(Request $request) {
-
     }
 
     public function gewinnspiel(Request $request) {
@@ -34,6 +34,11 @@ class CampyWebController extends Controller
 
     public function getReturnPath(Request $request) {
         $url = $request->return_path ?? 'https://code.design/';
+        return redirect()->away($url);
+    }
+
+    public function getErrorPath(Request $request) {
+        $url = $request->error_path ?? 'https://code.design/';
         return redirect()->away($url);
     }
 }
