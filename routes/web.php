@@ -13,7 +13,8 @@
 Auth::routes();
 
 // Route::get('/', function () { return view('welcome'); });
-Route::get('/profile', 'UserController@index')->name('profile');
+Route::get('/profile', 'ProfileController@index')->name('profile');
+Route::patch('/profile', 'ProfileController@update');
 Route::get('/teilnahmebedingungen', function() { return view('legal.terms');} );
 Route::get('/datenschutz', function() { return view('legal.privacy');} );
 Route::get('/impressum', function() { return view('impressum');} );
@@ -22,7 +23,6 @@ Route::get('/', 'WelcomeController@index');
 Route::get('mycamps/create/{camp}', 'CampUserController@create');
 Route::resource('mycamps', 'CampUserController');
 Route::resource('camps', 'CampController');
-Route::resource('users', 'UserController');
 
 
 Route::group(['middleware' => 'can:isAdmin'], function() {
