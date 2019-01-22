@@ -9,10 +9,37 @@ use App\CampyWeb;
 class CampyWebController extends Controller
 {
     public function camp_registration(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'mobile' => 'required',
+            'fullname' => 'required',
+            'event' => 'required',
+            'tos' => 'required|accepted',
+        ]);
+        if($validator->fails()) {
+            return getErrorPath($request);
+        }
+        saveRequestToDatabase($request, [
+            'mobile',
+            'fullname',
+            'event',
+            'tos',
+        ]);
+        return getReturnPath($request);
     }
 
     public function gewinnspiel(Request $request) {
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+        if($validator->fails()) {
+            return getErrorPath($request);
+        }
+        saveRequestToDatabase($request, [
+            'name',
+            'email',
+        ]);
+        return getReturnPath($request);
     }
 
     public function magazin(Request $request) {
