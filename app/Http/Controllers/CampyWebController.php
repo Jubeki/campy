@@ -33,6 +33,7 @@ class CampyWebController extends Controller
     }
 
     public function getReturnPath(Request $request) {
-        return $request->return_path ?? 'https://code.design/';
+        $url = $request->return_path ?? 'https://code.design/';
+        return redirect()->away($url);
     }
 }
