@@ -91,7 +91,20 @@ class CampyWebController extends Controller
     }
 
     public function interest(Request $request) {
-
+        $validator = Validator::make($request->all(), [
+            'firstname' => 'required',
+            'email' => 'required',
+            'city' => 'required',
+        ]);
+        if($validator->fails()) {
+            return getErrorPath($request);
+        }
+        saveRequestToDatabase($request, [
+            'vorname',
+            'email',
+            'city',
+        ]);
+        return getReturnPath($request);
     }
 
     public function saveRequestToDatabase(Request $request, $parameters) {
