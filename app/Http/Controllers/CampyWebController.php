@@ -27,7 +27,7 @@ class CampyWebController extends Controller
         return $this->getReturnPath($request);
     }
 
-    public function gewinnspiel(Request $request) {
+    public function giveaway(Request $request) {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
@@ -35,14 +35,14 @@ class CampyWebController extends Controller
         if($validator->fails()) {
             return $this->getErrorPath($request);
         }
-        $this->saveRequestToDatabase($request, 'gewinnspiel', [
+        $this->saveRequestToDatabase($request, 'giveaway', [
             'name',
             'email',
         ]);
         return $this->getReturnPath($request);
     }
 
-    public function magazin(Request $request) {
+    public function magazine(Request $request) {
         $validator = Validator::make($request->all(), [
             'vorname' => 'required',
             'nachname' => 'required',
@@ -56,7 +56,7 @@ class CampyWebController extends Controller
         if($validator->fails()) {
             return $this->getErrorPath($request);
         }
-        $this->saveRequestToDatabase($request, 'magazin', [
+        $this->saveRequestToDatabase($request, 'magazine', [
             'vorname',
             'nachname',
             'email',
@@ -69,7 +69,7 @@ class CampyWebController extends Controller
         return $this->getReturnPath($request);
     }
 
-    public function kontakt(Request $request) {
+    public function contact(Request $request) {
         $validator = Validator::make($request->all(), [
             'vorname' => 'required',
             'nachname' => 'required',
@@ -80,7 +80,7 @@ class CampyWebController extends Controller
         if($validator->fails()) {
             return $this->getErrorPath($request);
         }
-        $this->saveRequestToDatabase($request, 'kontakt', [
+        $this->saveRequestToDatabase($request, 'contact', [
             'vorname',
             'nachname',
             'email',

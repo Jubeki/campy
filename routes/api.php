@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('camp_registration', 'CampyWebController@camp_registration');
-Route::post('gewinnspiel', 'CampyWebController@gewinnspiel');
-Route::post('magazin', 'CampyWebController@magazin');
-Route::post('kontakt', 'CampyWebController@kontakt');
+Route::post('gewinnspiel', 'CampyWebController@giveaway');
+Route::post('magazin', 'CampyWebController@magazine');
+Route::post('kontakt', 'CampyWebController@contact');
 Route::post('interest', 'CampyWebController@interest');
