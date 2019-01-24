@@ -29,7 +29,7 @@ class CampController extends Controller
         $camps = Camp::getRegisterableCamps();
         return view('camp.all',compact('camps', 'user'));
     }
-    
+
     /**
      * Display a list of all camps the authenticated user is registered for
      */
@@ -107,7 +107,7 @@ class CampController extends Controller
             'contribution' => 'required'
         ]);
 
-    
+
         $user = Auth::user();
         $camp_registered = $request->camp;
         $laptop = $request->laptop;
@@ -130,10 +130,10 @@ class CampController extends Controller
                 'contribution' => $contribution,
                 'laptop' => $laptop,
                 'comment' => $comment
-            ]]); 
+            ]]);
         }
 
         return redirect('/mycamps');
     }
-    
+
 }
