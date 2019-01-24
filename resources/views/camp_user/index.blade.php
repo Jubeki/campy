@@ -26,7 +26,7 @@
       <td>{{ $camp->to->format('d.m.Y') }}</td>
       <td>@component('components.status_camp', ['camp' => $camp->pivot->status]) @endcomponent</td>
       <td>@component('components.status_laptop', ['laptop' => $camp->pivot->laptop]) @endcomponent</td>
-      <td><a href="mycamps/{{ $camp->id }}/edit">Details</a></td>
+      <td><a href="{{route('camp', [$camp])}}">Details</a></td>
     </tr>
     @endforeach
   </tbody>

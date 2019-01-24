@@ -69,7 +69,7 @@
 </div>
 @endif
 
-<form action="/mycamps/{{ $camp->id }}" method="post">
+<form action="{{route('camp', [$camp->id])}}" method="post">
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
 
@@ -108,7 +108,6 @@
                       <select name="contribution" class="mt-2 block appearance-none w-full bg-white border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded">
                         <option value="payer" @if($camp->pivot->contribution == 'payer')selected @endif>Ich zahle Unkostenbeitrag (siehe Webseite)</option>
                         <option value="waiver" @if($camp->pivot->contribution == 'waiver')selected @endif>Ich kann den Unkostenbeitrag gerade nicht zahlen</option>
-                        <option value="payer"></option>
                     </select>
                     <div class="pointer-events-none absolute pin-y pin-r flex items-center px-2 text-grey-darker"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="fill-current h-4 w-4"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"></path></svg></div>
                     </div>
