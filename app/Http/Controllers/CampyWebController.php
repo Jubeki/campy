@@ -14,6 +14,7 @@ class CampyWebController extends Controller
             'fullname' => 'required',
             'event' => 'required',
             'tos' => 'required|accepted',
+            'token' => 'size:0',
         ]);
         if($validator->fails()) {
             return $this->getErrorPath($request);
@@ -31,6 +32,7 @@ class CampyWebController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required',
+            'token' => 'size:0',
         ]);
         if($validator->fails()) {
             return $this->getErrorPath($request);
@@ -52,6 +54,7 @@ class CampyWebController extends Controller
             'ort' => 'required',
             'anzahl' => 'required',
             'reason' => 'required',
+            'token' => 'size:0',
         ]);
         if($validator->fails()) {
             return $this->getErrorPath($request);
@@ -76,6 +79,7 @@ class CampyWebController extends Controller
             'email' => 'required',
             'anliegen' => 'required',
             'nachricht' => 'required',
+            'token' => 'size:0',
         ]);
         if($validator->fails()) {
             return $this->getErrorPath($request);
@@ -95,6 +99,7 @@ class CampyWebController extends Controller
             'firstname' => 'required',
             'email' => 'required',
             'city' => 'required',
+            'token' => 'size:0',
         ]);
         if($validator->fails()) {
             return $this->getErrorPath($request);
