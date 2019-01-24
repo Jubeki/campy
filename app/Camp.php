@@ -5,6 +5,7 @@ namespace App;
 use App\Camp;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Camp extends Model
 {
@@ -119,4 +120,26 @@ class Camp extends Model
         return DB::table('camp_user')->where($options);
     }
 
+    public static function getRunningCamps() {
+        return Camp::all()
+        ->where('camp_status','open')
+        ->where('to', '>=', Carbon::now())
+        ->where('from', '<=', Carbon::now())
+        ->sortBy('from');
+    }
+
+    public static function getRegisterableCamps() {
+        return Camp::all()
+        ->where('camp_status','open')
+        ->where('registration_end', '>=', Carbon::now())
+        ->where('registration_start', '<=', Carbon::now())
+        ->sortBy('from');
+    }
+
+    public static function getFutureCamps() {
+        return Camp::all()
+        ->where('camp_status', 'open')
+        ->where('to', '>=', Carbon::now())
+        ->sortBy('from');
+    }
 }
