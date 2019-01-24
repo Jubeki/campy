@@ -105,7 +105,7 @@ class CampyWebController extends Controller
             return $this->getErrorPath($request);
         }
         $this->saveRequestToDatabase($request, 'interest', [
-            'vorname',
+            'firstname',
             'email',
             'city',
         ]);
